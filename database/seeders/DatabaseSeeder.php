@@ -69,7 +69,11 @@ class DatabaseSeeder extends Seeder
         // Permission::create(['name'=>'test','guard_name'=>'broker']);
 
         $this->call(ItemSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(AdminSeeder::class);
 
+        $this->call(RoleHasPermissionsTableSeeder::class);
 
         
     }
