@@ -43,22 +43,10 @@ use App\Models\Item;
 |
 */
 
-Route::get('/', function () {
+    Route::get('/', function () {
+        return redirect()->route('auth.login-view', ['guard' => 'admin']);
+    });
 
-   
-    
-    return 'WELCOME';
-    
-
-});
-
-//  route::resource("/student",StudentController::class);
-
-
-//  Route::prefix('/cms/admin')->groub(function(){
-//     
-
-//  });
 
     route::prefix('cms')->middleware('guest:admin,broker')->group(function(){
     Route::get('{guard}/login',[AuthController::class, 'showLogin'])->name('auth.login-view');
@@ -89,12 +77,6 @@ Route::get('/', function () {
 
 
 
-    // Route::get('test', function () {
-    //     $name=auth()->user()->UserName;
-    //              return $name;
-    //         });
- });
-
 
 Route::prefix('cms/admin')->middleware('auth:admin,broker')->group(function () {
     // Route::view('/','cms.temp')->name('home');
@@ -123,12 +105,3 @@ Route::prefix('cms/admin')->middleware('auth:admin,broker')->group(function () {
 
 
 
-// route::get('age',function(){
-//     echo "Show view";
-// })->middleware('age');
-//  Route::get('/', function () {
-//          return view('cms.parent');
-//     });
-    // Route::get('/index', function () {
-    //     return view('cms.temp.index');
-    // });
